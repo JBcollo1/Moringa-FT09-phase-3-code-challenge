@@ -33,9 +33,31 @@ class Magazine:
 
     def articles(self):
         query = """
-              SELECT
+              SELECT articles.title
+              FROM articles
+              LEFT JOIN magazines
+              on articles.magazine_id = magazines.id
+              WHERE magazines.id = ?
 
         """
+        cursor.execute(query, (self._id,))
+        articles = cursor.fetchall()
+        return [article[0] for article in articles] if articles else None
+    def contributors(self):
+        query = """
+          SELECT authors.name
+          FROM authors
+          LEFT JOIN articles
+          ON authors.id = articles.author_id
+          LEFT JOIN magazines
+          ON articles.magazine_id = magazines.id
+          WHERE magazines.id = ?
+        """
+        cursor.execute(query, (self._id,))
+        contributors = cursor.fetchall()
+        return [contributor[0] for contributor in contributors] if contributors else None
+
+        
     @property
     def name(self):
         return self._name
