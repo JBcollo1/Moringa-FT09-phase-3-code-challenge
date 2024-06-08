@@ -54,16 +54,7 @@ class Article:
         cursor.execute(query, (self._id,))
         author = cursor.fetchone()
         return author[0] if author else None
-    # def magazine_name(self):
-
-
-# article1 = Article( 7, "manaa", "shopp", 9, 8)    
-# print(article1)
-# article2 = Article(8,"evans kik","supply",7,8)
-# print(article2)
-# article2 = Article(67,"Larry kik","supply",7,8)
-# article5 = Article("John kik","supply",6,6)
-
+    
 
     
    

@@ -74,15 +74,17 @@ class Magazine:
         sql = """
             SELECT authors.name
             FROM authors
-            JOIN articles
+            LEFT JOIN articles 
             ON authors.id = articles.author_id
             WHERE articles.magazine_id = ?
             GROUP BY authors.id
             HAVING COUNT(articles.id) > 2
         """
+        print("SQL Query:", sql)
         cursor.execute(sql, (self._id,))
         contributing_authors = cursor.fetchall()
         return [contributing_author[0] for contributing_author in contributing_authors] if contributing_authors else None
+
 
     @property
     def name(self):

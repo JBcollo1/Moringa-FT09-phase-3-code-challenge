@@ -34,7 +34,7 @@ class Author:
             SELECT articles.title
             FROM articles
             LEFT JOIN authors
-            on articles.author_id = authors.id
+            ON articles.author_id = authors.id
             WHERE authors.id = ?
         """
         cursor.execute(sql, (self._id,))
@@ -45,9 +45,9 @@ class Author:
             SELECT magazines.name
             FROM magazines
             LEFT JOIN articles
-            on magazines.id = articles.magazine_id
+            ON magazines.id = articles.magazine_id
             LEFT JOIN authors
-            on articles.author_id = authors.id
+            ON articles.author_id = authors.id
             WHERE authors.id = ?
         """
         cursor.execute(sql,(self._id,))
