@@ -21,7 +21,8 @@ class Article:
         self._content = content
         self._author_id = author_id
         self._magazine_id = magazine_id
-        self.save()
+        # uncomment the self.save() to automatically save the initialized data in the database
+        # self.save()
 
     def __repr__(self):
         return f'<Article {self.title}>'
